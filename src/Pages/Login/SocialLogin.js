@@ -5,8 +5,10 @@ import auth from "../../firebase.init";
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   return (
-    <div>
-      <button onClick={() => signInWithGoogle()}>Log in with Google</button>
+    <div className="">
+      <button className="btn btn-accent" onClick={() => signInWithGoogle()}>
+        Log in with Google
+      </button>
     </div>
   );
 };

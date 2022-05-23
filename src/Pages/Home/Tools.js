@@ -12,9 +12,31 @@ const Tools = () => {
     return <Loading />
   }
   return (
-    <div>
-      <h2>Tools</h2>
-      {tools.map(tool => <h1>Tools:{tool?.name}</h1> )}
+    <div className="container mx-auto">
+      <h2 className="text-6xl font-bold text-center text-blue-900 mb-4">
+        Tools
+      </h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+        {tools.map((tool) => {
+          return (
+            <div key={tool._id} class="card w-96 bg-base-100 shadow-xl">
+              <figure>
+                <img
+                  src={tool.image}
+                  alt=""
+                />
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">Shoes!</h2>
+                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div class="card-actions justify-end">
+                  <button class="btn btn-primary">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

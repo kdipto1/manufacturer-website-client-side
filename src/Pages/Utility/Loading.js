@@ -4,11 +4,13 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Loading = () => {
   return (
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
-      <p>
-        <Skeleton count={3} />
-      </p>
-    </SkeletonTheme>
+    <div className="flex justify-items-center justify-center items-center">
+      <SkeletonTheme baseColor="#202020" highlightColor="#444">
+        <p>
+          <Skeleton width={200} count={10} />
+        </p>
+      </SkeletonTheme>
+    </div>
   );
 };
 

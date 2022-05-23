@@ -6,15 +6,8 @@ import banner1 from "../Images/banner1.jpg";
 
 const Banner = () => {
   return (
-    <div>
-      <Carousel>
-        <div className="lg:h-4/5">
-          <img src={banner} alt="" />
-        </div>
-        <div className="lg:h-4/5">
-          <img src={banner1} alt="" />
-        </div>
-      </Carousel>
+    <div className="bg-slate-800 text-white">
+      Banner
     </div>
   );
 };

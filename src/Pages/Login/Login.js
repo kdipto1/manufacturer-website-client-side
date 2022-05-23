@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Login = () => {
   return (
@@ -7,12 +7,12 @@ const Login = () => {
       <input
         type="text"
         placeholder="Type here"
-        class="input input-bordered input-secondary w-full max-w-xs"
+        className="input input-bordered input-secondary w-full max-w-xs"
       />
       <input
         type="text"
         placeholder="Type here"
-        class="input input-bordered input-secondary w-full max-w-xs"
+        className="input input-bordered input-secondary w-full max-w-xs"
       />
     </div>
   );

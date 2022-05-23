@@ -1,18 +1,16 @@
 import React from "react";
+import Banner from "./Banner";
+import Summary from "./Summary";
+import Tools from "./Tools";
+
 
 const Home = () => {
   return (
     <div>
       <h2>This is home, it will contain banner, tools</h2>
-      {/* Tools section*******************************/}
-      <section></section>
-      {/* Business section++++++++++++++++++++++++++ */}
-      <section>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </section>
+      <Banner />
+      <Tools />
+      <Summary/>
     </div>
   );
 };

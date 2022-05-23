@@ -1,15 +1,17 @@
 import { Route, Routes } from "react-router-dom";
+import Blogs from "./Pages/Blogs/Blogs";
 import Home from "./Pages/Home/Home";
-import SocialLogin from "./Pages/Login/SocialLogin";
+import Login from "./Pages/Login/Login";
 import Header from "./Pages/Shared/Header";
 
 function App() {
   return (
     <div>
-      <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/socialLogin" element={<SocialLogin />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

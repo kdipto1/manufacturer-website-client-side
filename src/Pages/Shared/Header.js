@@ -6,8 +6,11 @@ const Header = () => {
     <li className="lg:mr-4">
       <NavLink to="/">Home</NavLink>
     </li>
+    <li className="lg:mr-4">
+      <NavLink to="/blogs">Blogs</NavLink>
+    </li>
     <li>
-      <NavLink to="/socialLogin">Login</NavLink>
+      <NavLink to="/login">Login</NavLink>
     </li>
   </>)
   return (

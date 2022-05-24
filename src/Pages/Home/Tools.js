@@ -1,15 +1,15 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
 
 const Tools = () => {
   const { data: tools, isLoading } = useQuery("homeTools", () =>
-    fetch("https://server-12-12.herokuapp.com/tools?size=6").then((res) =>
-      res.json()
-    )
+    fetch("http://localhost:5000/tools?size=6").then((res) => res.json())
   );
   if (isLoading) {
-    return <Loading/>
+    return <Loading />;
   }
   return (
     <div className="container mx-auto">

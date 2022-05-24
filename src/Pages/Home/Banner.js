@@ -6,8 +6,8 @@ import banner1 from "../Images/banner1.jpg";
 
 const Banner = () => {
   return (
-    <div className="bg-slate-800 text-white">
-      Banner
+    <div className="">
+      <img src={banner} alt="" />
     </div>
   );
 };

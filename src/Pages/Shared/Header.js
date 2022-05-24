@@ -1,14 +1,14 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
   if (loading) {
-    return <Loading/>
+    return <Loading />;
   }
   const menuItems = (
     <>
@@ -18,6 +18,11 @@ const Header = () => {
       <li className="lg:ml-4">
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -71,7 +76,13 @@ const Header = () => {
                 <a>Item 2</a>
               </li>
               <li>
-                <a onClick={() => signOut(auth)}>Log out</a>
+                <a
+                  onClick={() =>
+                    signOut(auth, localStorage.removeItem("accessToken"))
+                  }
+                >
+                  Log out
+                </a>
               </li>
             </ul>
           </div>

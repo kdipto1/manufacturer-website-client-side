@@ -7,6 +7,10 @@ import Header from "./Pages/Shared/Header";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Register from "./Pages/Login/Register";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyOrders from "./Pages/Dashboard/MyOrders";
+import AddReview from "./Pages/Dashboard/AddReview";
+import MyProfile from "./Pages/Dashboard/MyProfile";
 
 function App() {
   return (
@@ -14,12 +18,17 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="myOrders" element={<MyOrders/>} />
+          <Route path="addReview" element={<AddReview/>} />
+          <Route path="myProfile" element={<MyProfile/>} />
+        </Route>
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="*" element={<NotFound />}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }

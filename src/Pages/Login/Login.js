@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useRef } from "react";
 import {
   useAuthState,
@@ -35,7 +36,18 @@ const Login = () => {
       toast(error?.message || error1?.message);
     }
     if (user || user1) {
-      navigate(from, { replace: true });
+      const url = "http://localhost:5000/login";
+      axios
+        .post(url, { email: user1?.email })
+        .then((response) => {
+          const { data } = response;
+          localStorage.setItem("accessToken", data.token);
+          console.log(data);
+          navigate(from, { replace: true });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   }, [error, from, loading, user, navigate, error1, user1, loading1]);
   const onSubmit = async (data) => {

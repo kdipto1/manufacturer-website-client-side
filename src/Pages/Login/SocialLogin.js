@@ -1,18 +1,31 @@
+import axios from "axios";
 import React, { useEffect } from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
 
 const SocialLogin = () => {
+  const [user1, loading1, error1] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   useEffect(() => {
     if (user) {
-      navigate(from, { replace: true });
+      const url = "http://localhost:5000/login";
+      axios
+        .post(url, { email: user1?.email })
+        .then((response) => {
+          const { data } = response;
+          localStorage.setItem("accessToken", data.token);
+          console.log(data);
+          navigate(from, { replace: true });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
     if (loading) {
       <Loading />;

@@ -1,18 +1,25 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { signOut } from "firebase/auth";
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, NavLink } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "../Utility/Loading";
 
 const Header = () => {
-  const menuItems = (<>
-    <li className="">
-      <NavLink to="/">Home</NavLink>
-    </li>
-    <li className="lg:ml-4">
-      <NavLink to="/blogs">Blogs</NavLink>
-    </li>
-    <li className="lg:ml-4">
-      <NavLink to="/login">Login</NavLink>
-    </li>
-  </>)
+  const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    return <Loading/>
+  }
+  const menuItems = (
+    <>
+      <li className="">
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li className="lg:ml-4">
+        <NavLink to="/blogs">Blogs</NavLink>
+      </li>
+    </>
+  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -40,15 +47,39 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
-        <NavLink to="/" className="btn btn-ghost normal-case text-xl">daisyUI</NavLink>
+        <NavLink to="/" className="btn btn-ghost normal-case text-xl">
+          daisyUI
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">
-          {menuItems}
-        </ul>
+        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <label tabIndex="0" className="btn btn-ghost rounded-btn">
+              {user?.email}
+            </label>
+            <ul
+              tabIndex="0"
+              className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+            >
+              <li>
+                <a>Item 1</a>
+              </li>
+              <li>
+                <a>Item 2</a>
+              </li>
+              <li>
+                <a onClick={() => signOut(auth)}>Log out</a>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <label tabIndex="0" className="btn btn-ghost rounded-btn">
+            <NavLink to="/login">Login</NavLink>
+          </label>
+        )}
       </div>
     </div>
   );

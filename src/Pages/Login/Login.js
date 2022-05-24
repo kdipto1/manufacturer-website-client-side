@@ -23,20 +23,21 @@ const Login = () => {
   const [sendPasswordResetEmail, sending, resetError] =
     useSendPasswordResetEmail(auth);
   const emailRef = useRef("");
+  const [user1, loading1, error1] = useAuthState(auth);
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
-    if (error) {
-      toast(error?.message);
+    if (loading || loading1) {
+      return;
     }
-    if (loading) {
-      return <Loading />;
+    if (error || error1) {
+      toast(error?.message || error1?.message);
     }
-    if (user) {
+    if (user || user1) {
       navigate(from, { replace: true });
     }
-  }, [error, from, loading, user, navigate]);
+  }, [error, from, loading, user, navigate, error1, user1, loading1]);
   const onSubmit = async (data) => {
     // console.log(data);
     await signInWithEmailAndPassword(data?.email, data?.password);

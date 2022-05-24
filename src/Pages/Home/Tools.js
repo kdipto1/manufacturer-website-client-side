@@ -1,7 +1,5 @@
 import React from "react";
 import { useQuery } from "react-query";
-import Skeleton from "react-loading-skeleton";
-// import "react-loading-skeleton/dist/skeleton.css";
 import Loading from "../Utility/Loading";
 
 const Tools = () => {
@@ -11,7 +9,7 @@ const Tools = () => {
     )
   );
   if (isLoading) {
-    return <Loading />;
+    return <Loading/>
   }
   return (
     <div className="container mx-auto">
@@ -19,11 +17,11 @@ const Tools = () => {
         Tools
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
-        {tools.map((tool) => {
+        {tools?.map((tool) => {
           return (
-            <div key={tool._id} className="card w-96 bg-base-100 shadow-xl">
+            <div key={tool?._id} className="card w-96 bg-base-100 shadow-xl">
               <figure>
-                <img src={tool.image} alt="" />
+                <img src={tool?.image} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Shoes!</h2>

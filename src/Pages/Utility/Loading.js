@@ -1,15 +1,11 @@
 import React from 'react';
 import "react-loading-skeleton/dist/skeleton.css";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { InfinitySpin } from 'react-loader-spinner';
 
 const Loading = () => {
   return (
     <div className="flex justify-items-center justify-center items-center">
-      <SkeletonTheme baseColor="#202020" highlightColor="#444">
-        <p>
-          <Skeleton width={200} count={10} />
-        </p>
-      </SkeletonTheme>
+      <InfinitySpin color="grey" />;
     </div>
   );
 };

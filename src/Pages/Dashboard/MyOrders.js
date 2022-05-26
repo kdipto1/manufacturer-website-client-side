@@ -24,6 +24,7 @@ const MyOrders = () => {
     };
     getMyOrders();
   }, [loading, user?.email]);
+  console.log(orders);
   return (
     <div>
       <h2>My orders :{orders?.length}</h2>

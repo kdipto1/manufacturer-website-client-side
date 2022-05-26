@@ -63,9 +63,10 @@ const Register = () => {
     await updateProfile({ displayName: data?.name });
     const email = data?.email;
     const name = data?.name;
+    const role = "user";
     const url = "http://localhost:5000/users";
     axios
-      .post(url, { name: name, email: email })
+      .post(url, { name: name, email: email, role: role })
       .then((response) => {
         const { data } = response;
         console.log(data);

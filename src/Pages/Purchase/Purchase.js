@@ -39,16 +39,32 @@ const Purchase = () => {
   };
   const handlePurchase = (event) => {
     event.preventDefault();
-    let quantity = event.target.minimum.value;
-    let name = event.target.name.value;
-    let email = event.target.email.value;
-    let address = event.target.address.value;
-    let number = event.target.number.value;
-    let totalPrice = parseInt(quantity) * parseInt(tool.price);
+    const status = "pending";
+    const quantity = event.target.minimum.value;
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const address = event.target.address.value;
+    const number = event.target.number.value;
+    const totalPrice = parseInt(quantity) * parseInt(tool.price);
     console.log(quantity, name, email, address, number, totalPrice);
-    const order = { quantity, name, email, address, number, totalPrice };
+    // const order = {
+    //   quantity: quantity,
+    //   name: name,
+    //   address: address,
+    //   number: number,
+    //   totalPrice: totalPrice,
+    //   status: status,
+    // };
     axios
-      .post("http://localhost:5000/orders", { order })
+      .post("http://localhost:5000/orders", {
+        quantity: quantity,
+        name: name,
+        address: address,
+        number: number,
+        totalPrice: totalPrice,
+        status: status,
+        email: email,
+      })
       .then(function (response) {
         console.log(response);
       })

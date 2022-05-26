@@ -27,6 +27,20 @@ const SocialLogin = () => {
           console.log(error);
         });
     }
+    if (user1) {
+      const email = user1?.email
+      const role  = "user"
+      const url = `http://localhost:5000/users?email=${email}`;
+      axios
+        .post(url, { email: email, role:role})
+        .then((response) => {
+          const { data } = response;
+          console.log(data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
     if (loading) {
       <Loading />;
       return;
@@ -34,7 +48,7 @@ const SocialLogin = () => {
     if (error) {
       toast(error?.message);
     }
-  }, [from, user, navigate, error, loading]);
+  }, [from, user, navigate, error, loading,user1?.email,user1]);
   return (
     <div className="">
       <button className="btn btn-accent" onClick={() => signInWithGoogle()}>

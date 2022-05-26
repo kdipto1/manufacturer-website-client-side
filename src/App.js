@@ -14,6 +14,10 @@ import MyProfile from "./Pages/Dashboard/MyProfile";
 import Purchase from "./Pages/Purchase/Purchase";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
+import AddProduct from "./Pages/Dashboard/AddProduct";
+import ManageOrders from "./Pages/Dashboard/ManageOrders";
+import ManageProducts from "./Pages/Dashboard/ManageProducts";
 
 function App() {
   return (
@@ -33,6 +37,10 @@ function App() {
           <Route path="myOrders" element={<MyOrders />} />
           <Route path="addReview" element={<AddReview />} />
           <Route path="myProfile" element={<MyProfile />} />
+          <Route path="makeAdmin" element={<MakeAdmin />} />
+          <Route path="addProduct" element={<AddProduct />} />
+          <Route path="manageOrders" element={<ManageOrders />} />
+          <Route path="manageProducts" element={<ManageProducts />} />
         </Route>
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />

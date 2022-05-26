@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
 
@@ -18,16 +19,22 @@ const Tools = () => {
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
         {tools?.map((tool) => {
+          // console.log(tool);
           return (
             <div key={tool?._id} className="card w-96 bg-base-100 shadow-xl">
               <figure>
-                <img src={tool?.image} alt="" />
+                <img style={{width:"200px"}} src={tool?.image} alt="" />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <h2 className="card-title">{tool?.name}</h2>
+                <p>{tool?.description}</p>
+                <p>Price: {tool?.price}</p>
+                <p>Quantity: {tool?.quantity}</p>
+                <p>MOQ: {tool?.moq}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
+                  <button className="btn btn-primary">
+                    <Link to={`/purchase/${tool._id}`}>Purchase</Link>
+                  </button>
                 </div>
               </div>
             </div>

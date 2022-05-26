@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
+import {BsPersonCircle} from "react-icons/bs"
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -19,7 +20,7 @@ const Header = () => {
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
       {user && (
-        <li>
+        <li className="lg:ml-4">
           <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
       )}
@@ -63,7 +64,7 @@ const Header = () => {
         {user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost rounded-btn">
-              {user?.email}
+              <BsPersonCircle className="text-4xl"/>
             </label>
             <ul
               tabIndex="0"

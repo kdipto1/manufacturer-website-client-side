@@ -11,6 +11,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddReview from "./Pages/Dashboard/AddReview";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import Purchase from "./Pages/Purchase/Purchase";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/purchase/:id" element={<Purchase />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="myOrders" element={<MyOrders/>} />
           <Route path="addReview" element={<AddReview/>} />

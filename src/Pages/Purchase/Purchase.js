@@ -40,6 +40,7 @@ const Purchase = () => {
   const handlePurchase = (event) => {
     event.preventDefault();
     const status = "pending";
+    const product = tool?.name
     const quantity = event.target.minimum.value;
     const name = event.target.name.value;
     const email = event.target.email.value;
@@ -59,6 +60,7 @@ const Purchase = () => {
       .post("http://localhost:5000/orders", {
         quantity: quantity,
         name: name,
+        product: product,
         address: address,
         number: number,
         totalPrice: totalPrice,
@@ -67,6 +69,9 @@ const Purchase = () => {
       })
       .then(function (response) {
         console.log(response);
+        if (response) {
+          toast("Order send")
+        }
       })
       .catch(function (error) {
         console.log(error);

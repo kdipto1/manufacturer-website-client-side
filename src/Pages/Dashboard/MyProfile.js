@@ -47,7 +47,7 @@ const MyProfile = () => {
       })
       .then((response) => {
         const { data } = response;
-        console.log(data);
+        // console.log(data);
         if (data) {
           toast("Profile updated");
           refetch();

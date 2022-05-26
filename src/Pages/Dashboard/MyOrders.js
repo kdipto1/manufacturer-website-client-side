@@ -16,7 +16,13 @@ const MyOrders = () => {
       const email = user?.email;
       const url = `http://localhost:5000/orders?email=${email}`;
       try {
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `${user?.email} ${localStorage.getItem(
+              "accessToken"
+            )}`,
+          },
+        });
         setOrders(data);
       } catch (error) {
         console.log(error);
@@ -24,7 +30,6 @@ const MyOrders = () => {
     };
     getMyOrders();
   }, [loading, user?.email]);
-  console.log(orders);
   return (
     <div>
       <h2>My orders :{orders?.length}</h2>
@@ -33,19 +38,23 @@ const MyOrders = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
+              <th>Product Name</th>
               <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Transaction id</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-          </tbody>
+          {orders.map((order, index) => {
+            return (
+              <tbody key={order._id}>
+                <tr>
+                  <th>{index + 1}</th>
+                  <td>{order?.product}</td>
+                  <td>Quality Control Specialist</td>
+                  <td>Blue</td>
+                </tr>
+              </tbody>
+            );
+          })}
         </table>
       </div>
     </div>

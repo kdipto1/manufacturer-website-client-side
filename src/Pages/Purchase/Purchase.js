@@ -39,14 +39,14 @@ const Purchase = () => {
   };
   const handlePurchase = (event) => {
     event.preventDefault();
-    let moq = event.target.minimum.value;
+    let quantity = event.target.minimum.value;
     let name = event.target.name.value;
     let email = event.target.email.value;
     let address = event.target.address.value;
     let number = event.target.number.value;
-    let totalPrice = parseInt(moq) * parseInt(tool.price);
-    // console.log(moq, name, email, address, number, totalPrice);
-    const order = { moq, name, email, address, number, totalPrice };
+    let totalPrice = parseInt(quantity) * parseInt(tool.price);
+    console.log(quantity, name, email, address, number, totalPrice);
+    const order = { quantity, name, email, address, number, totalPrice };
     axios
       .post("http://localhost:5000/orders", { order })
       .then(function (response) {
@@ -90,6 +90,7 @@ const Purchase = () => {
               className="input input-bordered input-accent mx-auto mb-4 w-28"
             />
             <input
+              disabled
               defaultValue={user?.email}
               name="email"
               type="text"

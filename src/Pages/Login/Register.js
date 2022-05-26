@@ -60,7 +60,19 @@ const Register = () => {
   const onSubmit = async (data) => {
     console.log(data);
     await createUserWithEmailAndPassword(data?.email, data?.password);
-    await updateProfile({displayName: data?.name});
+    await updateProfile({ displayName: data?.name });
+    const email = data?.email;
+    const name = data?.name;
+    const url = "http://localhost:5000/users";
+    axios
+      .post(url, { name: name, email: email })
+      .then((response) => {
+        const { data } = response;
+        console.log(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   return (
     <div className="flex flex-col justify-center items-center mt-6">

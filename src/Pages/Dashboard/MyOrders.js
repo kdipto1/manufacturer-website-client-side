@@ -73,7 +73,7 @@ const MyOrders = () => {
                 <tr>
                   <th>{index + 1}</th>
                   <td>{order?.product}</td>
-                  <td>{order?.quantity}</td>
+                  <td>{order?.orderQuantity}</td>
                   <td>{order?.totalPrice}</td>
                   <td>
                     {order.status === "pending" && (
@@ -96,7 +96,7 @@ const MyOrders = () => {
                             </h3>
                             <div className="modal-action">
                               <label
-                                className="btn btn-md"
+                                className="btn btn-md btn-error"
                                 onClick={() => handleDelete(order?._id)}
                                 htmlFor="cancel-order"
                               >

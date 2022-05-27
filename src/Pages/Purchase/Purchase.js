@@ -11,9 +11,10 @@ const Purchase = () => {
   let [tool, setTool] = useState({});
   // let moq = tool.moq;
   let [moqs, setMoqs] = useState(tool.moq);
-  console.log(moqs);
+  // console.log(moqs);
   let [moq1, setMoq] = useState();
-  console.log(moq1);
+  const [update, setUpdate] = useState();
+  // console.log(moq1);
   useEffect(() => {
     const getTool = async () => {
       const url = `http://localhost:5000/tools/${params.id}`;
@@ -27,7 +28,7 @@ const Purchase = () => {
       }
     };
     getTool();
-  }, [params.id]);
+  }, [params.id,update]);
 
   const handleQuantity = () => {
     if (moq1 < moqs) {
@@ -37,19 +38,19 @@ const Purchase = () => {
       toast(`we dont have stock more than ${tool.quantity} piece`);
     }
   };
-  const handlePurchase = (event) => {
+  const handlePurchase = async (event) => {
     event.preventDefault();
     const status = "pending";
-    const product = tool?.name
-    const quantity = event.target.minimum.value;
+    const product = tool?.name;
+    const orderQuantity = event.target.minimum.value;
     const name = event.target.name.value;
     const email = event.target.email.value;
     const address = event.target.address.value;
     const number = event.target.number.value;
-    const totalPrice = parseInt(quantity) * parseInt(tool.price);
-    console.log(quantity, name, email, address, number, totalPrice);
+    const totalPrice = parseInt(orderQuantity) * parseInt(tool.price);
+    // console.log(orderQuantity, name, email, address, number, totalPrice);
     // const order = {
-    //   quantity: quantity,
+    //   orderQuantity: orderQuantity,
     //   name: name,
     //   address: address,
     //   number: number,
@@ -58,7 +59,7 @@ const Purchase = () => {
     // };
     axios
       .post("http://localhost:5000/orders", {
-        quantity: quantity,
+        orderQuantity: orderQuantity,
         name: name,
         product: product,
         address: address,
@@ -70,13 +71,29 @@ const Purchase = () => {
       .then(function (response) {
         console.log(response);
         if (response) {
-          toast("Order send")
+          toast("Order send");
         }
       })
       .catch(function (error) {
         console.log(error);
-        toast.error(error.message)
+        toast.error(error.message);
       });
+    let quantity = parseInt(tool.quantity) - parseInt(orderQuantity);
+    console.log(quantity);
+    try {
+      const { data } = await axios.put(
+        `http://localhost:5000/tool/${tool?._id}`,
+        {
+          quantity: quantity,
+        }
+      );
+      console.log(data);
+      if (data) {
+        setUpdate(data)
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section>
@@ -120,6 +137,7 @@ const Purchase = () => {
               className="input input-bordered input-accent w-64 mb-4 max-w-xs"
             />
             <input
+              required
               type="text"
               name="name"
               defaultValue={user?.name || ""}

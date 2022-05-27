@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import auth from "../../firebase.init";
 import useAdmin from "../Hooks/useAdmin";
 import Loading from "../Utility/Loading";
@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   if (loading || adminLoading) {
-    return <Loading />
+    return <Loading />;
   }
   return (
     <div className="drawer drawer-mobile">
@@ -32,36 +32,36 @@ const Dashboard = () => {
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           {!admin && (
-            <li>
-              <Link to="myOrders">My Orders</Link>
+            <li className="my-2">
+              <NavLink to="/dashboard/myOrders">My Orders</NavLink>
             </li>
           )}
           {!admin && (
-            <li>
-              <Link to="addReview">Add Review</Link>
+            <li className="mb-2">
+              <NavLink to="/dashboard/addReview">Add Review</NavLink>
             </li>
           )}
-          <li>
-            <Link to="myProfile">My Profile</Link>
+          <li className="mb-2">
+            <NavLink to="/dashboard/myProfile">My Profile</NavLink>
           </li>
           {admin && (
-            <li>
-              <Link to="addProduct">Add Product</Link>
+            <li className="mb-2">
+              <NavLink to="/dashboard/addProduct">Add Product</NavLink>
+            </li>
+          )}
+          {admin && (
+            <li className="mb-2">
+              <NavLink to="/dashboard/manageProducts">Manage Products</NavLink>
+            </li>
+          )}
+          {admin && (
+            <li className="mb-2">
+              <NavLink to="/dashboard/manageOrders">Manage Orders</NavLink>
             </li>
           )}
           {admin && (
             <li>
-              <Link to="manageProducts">Manage Products</Link>
-            </li>
-          )}
-          {admin && (
-            <li>
-              <Link to="manageOrders">Manage Orders</Link>
-            </li>
-          )}
-          {admin && (
-            <li>
-              <Link to="makeAdmin">Make Admin</Link>
+              <NavLink to="/dashboard/makeAdmin">Make Admin</NavLink>
             </li>
           )}
         </ul>

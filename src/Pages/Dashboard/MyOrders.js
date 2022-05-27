@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
 
@@ -14,7 +15,7 @@ const MyOrders = () => {
     }
     const getMyOrders = async () => {
       const email = user?.email;
-      const url = `http://localhost:5000/orders?email=${email}`;
+      const url = `http://localhost:5000/userOrders?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -26,6 +27,7 @@ const MyOrders = () => {
         setOrders(data);
       } catch (error) {
         console.log(error);
+        toast.error(error.message)
       }
     };
     getMyOrders();

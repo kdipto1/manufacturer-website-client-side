@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
@@ -41,8 +42,9 @@ const MyOrders = () => {
             <tr>
               <th></th>
               <th>Product Name</th>
-              <th>Job</th>
-              <th>Transaction id</th>
+              <th>Quantity</th>
+              <th>Total Price(usd)</th>
+              <th>Payment</th>
             </tr>
           </thead>
           {orders.map((order, index) => {
@@ -51,8 +53,28 @@ const MyOrders = () => {
                 <tr>
                   <th>{index + 1}</th>
                   <td>{order?.product}</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
+                  <td>{order?.quantity}</td>
+                  <td>{order?.totalPrice}</td>
+                  <td>
+                    {order?.status === "pending" && (
+                      <Link to={`/dashboard/payment/${order?._id}`}>
+                        <button className="btn btn-xs btn-success">Pay</button>
+                      </Link>
+                    )}
+                    {order?.status === "paid" && (
+                      <div>
+                        <p>
+                          <span className="text-success">Paid</span>
+                        </p>
+                        <p>
+                          Transaction id:{" "}
+                          <span className="text-success">
+                            {order?.transactionId}
+                          </span>
+                        </p>
+                      </div>
+                    )}
+                  </td>
                 </tr>
               </tbody>
             );

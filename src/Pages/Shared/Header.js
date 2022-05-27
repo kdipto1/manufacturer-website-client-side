@@ -53,8 +53,8 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
-        <NavLink to="/" className="btn btn-ghost normal-case text-xl">
-          daisyUI
+        <NavLink to="/" className="btn btn-ghost normal-case font-bold text-xl">
+          Ronix
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">

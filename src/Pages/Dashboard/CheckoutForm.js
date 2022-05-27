@@ -1,7 +1,7 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import React, { useEffect, useState } from "react";
 
-const CheckoutForm = ({order}) => {
+const CheckoutForm = ({ order }) => {
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
@@ -10,7 +10,8 @@ const CheckoutForm = ({order}) => {
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
 
-  const { _id, quantity,name,product,address,totalPrice,status,email } = order;
+  const { _id, quantity, name, product, address, totalPrice, status, email } =
+    order;
 
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {

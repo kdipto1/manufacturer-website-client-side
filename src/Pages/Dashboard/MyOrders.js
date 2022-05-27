@@ -10,6 +10,7 @@ import Loading from "../Utility/Loading";
 const MyOrders = () => {
   const [user, loading, error] = useAuthState(auth);
   const [orders, setOrders] = useState([]);
+  const [cancel, setCancel] = useState();
   useEffect(() => {
     if (loading) {
       return;
@@ -28,11 +29,29 @@ const MyOrders = () => {
         setOrders(data);
       } catch (error) {
         console.log(error);
-        toast.error(error.message)
+        toast.error(error.message);
       }
     };
     getMyOrders();
-  }, [loading, user?.email]);
+  }, [loading, user?.email, cancel]);
+  const handleDelete = async (id) => {
+    const url = `http://localhost:5000/userOrders/${id}`;
+    try {
+      const { data } = await axios.delete(url, {
+        headers: {
+          authorization: `${user?.email} ${localStorage.getItem(
+            "accessToken"
+          )}`,
+        },
+      });
+      // console.log(data);
+      if (data) {
+        setCancel(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <h2>My orders :{orders?.length}</h2>
@@ -44,6 +63,7 @@ const MyOrders = () => {
               <th>Product Name</th>
               <th>Quantity</th>
               <th>Total Price(usd)</th>
+              <th>Cancel Order</th>
               <th>Payment</th>
             </tr>
           </thead>
@@ -55,6 +75,42 @@ const MyOrders = () => {
                   <td>{order?.product}</td>
                   <td>{order?.quantity}</td>
                   <td>{order?.totalPrice}</td>
+                  <td>
+                    {order.status === "pending" && (
+                      <div>
+                        <label
+                          for="cancel-order"
+                          className="btn btn-xs btn-warning modal-button"
+                        >
+                          Cancel
+                        </label>
+                        <input
+                          type="checkbox"
+                          id="cancel-order"
+                          className="modal-toggle"
+                        />
+                        <div className="modal modal-bottom sm:modal-middle">
+                          <div className="modal-box">
+                            <h3 className="font-bold text-lg">
+                              Are you sure about canceling this order?
+                            </h3>
+                            <div className="modal-action">
+                              <label
+                                className="btn btn-md"
+                                onClick={() => handleDelete(order?._id)}
+                                htmlFor="cancel-order"
+                              >
+                                Yes
+                              </label>
+                              <label for="cancel-order" className="btn btn-md">
+                                No
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </td>
                   <td>
                     {order?.status === "pending" && (
                       <Link to={`/dashboard/payment/${order?._id}`}>

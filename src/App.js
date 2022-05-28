@@ -24,6 +24,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Portfolio from "./Pages/Portfolio/Portfolio";
+import HomeMap from "./Pages/Home/HomeMap";
 
 function App() {
   useEffect(() => {
@@ -91,6 +92,7 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/map" element={<HomeMap />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

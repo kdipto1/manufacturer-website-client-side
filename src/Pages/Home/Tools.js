@@ -17,7 +17,7 @@ const Tools = () => {
       <h2 className="text-6xl font-bold text-center text-blue-900 mb-4">
         Tools
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+      <div className="grid px-4 lg:px-0 md:grid-cols-2 lg:grid-cols-3 gap-y-4 lg:gap-16">
         {tools?.slice(0, 6).map((tool) => {
           return (
             <div

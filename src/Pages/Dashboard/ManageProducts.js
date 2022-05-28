@@ -32,8 +32,8 @@ const ManageProducts = () => {
   return (
     <div>
       <h2>Manage products:{tools?.length}</h2>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th></th>
@@ -53,7 +53,7 @@ const ManageProducts = () => {
                     <div>
                       <label
                         for="manage-product-modal"
-                        class="btn btn-xs modal-button"
+                        className="btn btn-xs modal-button"
                       >
                         Delete
                       </label>
@@ -61,24 +61,24 @@ const ManageProducts = () => {
                       <input
                         type="checkbox"
                         id="manage-product-modal"
-                        class="modal-toggle"
+                        className="modal-toggle"
                       />
-                      <div class="modal modal-bottom sm:modal-middle">
-                        <div class="modal-box">
-                          <h3 class="font-bold text-lg">
+                      <div className="modal modal-bottom sm:modal-middle">
+                        <div className="modal-box">
+                          <h3 className="font-bold text-lg">
                             Are you sure about deleting this product?
                           </h3>
-                          <div class="modal-action">
+                          <div className="modal-action">
                             <label
                               onClick={() => handleProductDelete(tool?._id)}
                               for="manage-product-modal"
-                              class="btn btn-md"
+                              className="btn btn-md"
                             >
                               Yes
                             </label>
                             <label
                               for="manage-product-modal"
-                              class="btn btn-md"
+                              className="btn btn-md"
                             >
                               No
                             </label>

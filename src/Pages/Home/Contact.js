@@ -3,7 +3,7 @@ import contact from "../Images/contact.png";
 
 const Contact = () => {
   return (
-    <div className="container pb-10 mx-auto">
+    <div className="container pb-10 mx-auto overflow-x-hidden">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img src={contact} alt="Album" />

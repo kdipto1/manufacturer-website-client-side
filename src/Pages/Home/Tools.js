@@ -13,7 +13,7 @@ const Tools = () => {
     return <Loading />;
   }
   return (
-    <div className="container mx-auto">
+    <div className="container pb-8 mx-auto overflow-x-hidden">
       <h2 className="text-6xl font-bold text-center text-blue-900 mb-4">
         Tools
       </h2>
@@ -28,14 +28,14 @@ const Tools = () => {
               data-aos-easing="ease-in-out"
               data-aos-once="true"
               key={tool?._id}
-              className="card w-96 bg-base-100 shadow-xl"
+              className="card w-80 bg-base-100 shadow-xl"
             >
               <figure>
                 <img style={{ width: "200px" }} src={tool?.image} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{tool?.name}</h2>
-                <p>{tool?.description}</p>
+                <p>{tool?.description.slice(0,80)}...</p>
                 <p>Price: {tool?.price}</p>
                 <p>Quantity: {tool?.quantity}</p>
                 <p>MOQ: {tool?.moq}</p>

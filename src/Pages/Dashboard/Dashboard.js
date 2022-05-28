@@ -12,7 +12,7 @@ const Dashboard = () => {
     return <Loading />;
   }
   return (
-    <div className="drawer drawer-mobile">
+    <div className="drawer drawer-mobile overflow-x-hidden">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* <!-- Page content here --> */}

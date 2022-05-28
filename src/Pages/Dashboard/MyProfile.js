@@ -19,7 +19,6 @@ const MyProfile = () => {
       },
     }).then((res) => res.json())
   );
-  // console.log(profile?._id);
   if (isLoading || loading) {
     return <Loading />;
   }
@@ -30,14 +29,6 @@ const MyProfile = () => {
     const education = event?.target.education.value;
     const phone = event?.target.phone.value;
     const linkedin = event?.target.linkedin.value;
-    // const newProfile = {
-    //   name: name,
-    //   address: address,
-    //   education: education,
-    //   linkedin: linkedin,
-    //   phone: phone,
-    // };
-    // console.log(newProfile);
     const url = `https://server-12-12.herokuapp.com/users/${profile._id}`;
     axios
       .put(
@@ -70,7 +61,7 @@ const MyProfile = () => {
       });
   };
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="mx-auto card-title">Profile:</h2>

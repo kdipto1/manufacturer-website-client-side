@@ -28,7 +28,7 @@ const Payment = () => {
     return <Loading />;
   }
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="card w-50 max-w-md bg-base-100 shadow-xl my-12">
         <div className="card-body">
           <h2 className="card-title font-bold text-success mx-auto">

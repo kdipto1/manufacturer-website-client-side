@@ -12,7 +12,7 @@ const Summary = () => {
       data-aos-duration="400"
       data-aos-easing="ease-in-out"
       data-aos-once="true"
-      className="container gap-6 mx-auto grid-cols-2 grid lg:grid-cols-4"
+      className="container mt-16 gap-6 mx-auto grid-cols-2 grid lg:grid-cols-4 overflow-x-hidden"
     >
       <div className="mx-auto">
         <FaFontAwesomeFlag className="text-7xl " />

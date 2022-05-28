@@ -5,7 +5,7 @@ import { IoIosArrowDropdown } from "react-icons/io";
 
 const Banner = () => {
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       <div
         className="hero min-h-screen"
         style={{ backgroundImage: `url(${banner})` }}

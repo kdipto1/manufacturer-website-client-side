@@ -46,7 +46,7 @@ const ManageOrders = () => {
     }
   };
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <h2>Manage orders:{orders?.length}</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">

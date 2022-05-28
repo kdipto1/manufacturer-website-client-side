@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import Loading from "../Utility/Loading";
+import { toast } from "react-toastify";
 
 const ManageProducts = () => {
   const {
@@ -9,7 +10,9 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("manageTools", () =>
-    fetch("https://server-12-12.herokuapp.com/tools").then((res) => res.json())
+    fetch("https://server-12-12.herokuapp.com/manageTools").then((res) =>
+      res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;
@@ -23,6 +26,7 @@ const ManageProducts = () => {
         },
       });
       if (data) {
+        toast("Product deleted");
         refetch();
       }
     } catch (error) {
@@ -30,7 +34,7 @@ const ManageProducts = () => {
     }
   };
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <h2>Manage products:{tools?.length}</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -44,7 +48,7 @@ const ManageProducts = () => {
           </thead>
           {tools.map((tool, index) => {
             return (
-              <tbody>
+              <tbody key={tool?._id}>
                 <tr>
                   <th>{index + 1}</th>
                   <td>{tool?.name}</td>

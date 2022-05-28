@@ -31,7 +31,7 @@ function App() {
     AOS.init()
   },[])
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

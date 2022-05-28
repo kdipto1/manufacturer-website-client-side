@@ -39,7 +39,7 @@ const MakeAdmin = () => {
     }
   };
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <h2>Make admin:{users.length}</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">

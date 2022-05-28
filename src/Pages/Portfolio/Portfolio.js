@@ -2,7 +2,7 @@ import React from 'react';
 
 const Portfolio = () => {
   return (
-    <section className="container mx-auto h-screen">
+    <section className="container mx-auto h-screen overflow-x-hidden">
       <h2>Name: Dipto Karmaker</h2>
       <h2>Email: kdipto2@gmail.com</h2>
       <h2>

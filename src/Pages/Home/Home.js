@@ -8,7 +8,7 @@ import Tools from "./Tools";
 
 const Home = () => {
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 overflow-x-hidden">
       <Banner />
       <Tools />
       <div className="mt-16 ">

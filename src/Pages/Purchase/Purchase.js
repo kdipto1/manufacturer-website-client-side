@@ -119,7 +119,7 @@ const Purchase = () => {
     }
   };
   return (
-    <section>
+    <section className="overflow-x-hidden">
       <div className="card lg:card-side bg-base-100 mx-auto lg:w-4/6 shadow-xl mt-6">
         <figure>
           <img src={tool?.image} alt="Album" />

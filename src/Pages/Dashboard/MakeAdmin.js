@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     data: users,
     isLoading,
     refetch,
-  } = useQuery("homeTools", () =>
+  } = useQuery("getUsers", () =>
     fetch("https://server-12-12.herokuapp.com/makeAdmin", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

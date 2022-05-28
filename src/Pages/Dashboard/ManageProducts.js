@@ -10,9 +10,11 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("manageTools", () =>
-    fetch("https://server-12-12.herokuapp.com/manageTools").then((res) =>
-      res.json()
-    )
+    fetch("https://server-12-12.herokuapp.com/manageTools", {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

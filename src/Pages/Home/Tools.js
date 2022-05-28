@@ -13,7 +13,7 @@ const Tools = () => {
     return <Loading />;
   }
   return (
-    <div className="container pb-8 mx-auto overflow-x-hidden">
+    <div className="container pt-6 pb-8 mx-auto overflow-y-hidden overflow-x-hidden">
       <h2 className="text-6xl font-bold text-center text-blue-900 mb-4">
         Tools
       </h2>

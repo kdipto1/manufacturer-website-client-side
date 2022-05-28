@@ -23,6 +23,7 @@ import Payment from "./Pages/Dashboard/Payment";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Portfolio from "./Pages/Portfolio/Portfolio";
 
 function App() {
   useEffect(() => {
@@ -87,6 +88,7 @@ function App() {
           />
         </Route>
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />

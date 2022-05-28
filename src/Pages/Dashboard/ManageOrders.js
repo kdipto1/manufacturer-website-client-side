@@ -77,7 +77,7 @@ const ManageOrders = () => {
                         onClick={() => handleShipping(order._id)}
                         className="btn btn-xs"
                       >
-                        Ship
+                        Deliver
                       </button>
                     )}
                   </td>

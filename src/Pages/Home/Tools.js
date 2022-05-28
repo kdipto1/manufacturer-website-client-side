@@ -40,7 +40,7 @@ const Tools = () => {
                 <p>Quantity: {tool?.quantity}</p>
                 <p>MOQ: {tool?.moq}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">
+                  <button className="btn btn-accent">
                     <Link to={`/purchase/${tool._id}`}>Purchase</Link>
                   </button>
                 </div>

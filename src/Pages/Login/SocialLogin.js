@@ -50,7 +50,7 @@ const SocialLogin = () => {
     }
   }, [from, user, navigate, error, loading, user1?.email, user1]);
   return (
-    <div className="">
+    <div className="mb-36">
       <button className="btn btn-accent" onClick={() => signInWithGoogle()}>
         Log in with Google
       </button>

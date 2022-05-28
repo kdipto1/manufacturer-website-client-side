@@ -19,6 +19,9 @@ const Header = () => {
       <li className="lg:ml-4">
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
+      <li className="lg:ml-4">
+        <NavLink to="/portfolio">Portfolio</NavLink>
+      </li>
       {user && (
         <li className="lg:ml-4">
           <NavLink to="/dashboard">Dashboard</NavLink>

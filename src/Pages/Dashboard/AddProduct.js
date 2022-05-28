@@ -8,9 +8,9 @@ const AddProduct = () => {
     let name = event?.target.name.value;
     let description = event?.target.description.value;
     let image = event?.target.image.value;
-    let moq = event?.target.moq.value;
-    let quantity = event?.target.quantity.value;
-    let price = event?.target.price.value;
+    let moq = parseInt(event?.target.moq.value);
+    let quantity = parseInt(event?.target.quantity.value);
+    let price = parseInt(event?.target.price.value);
     console.log(name, image, description, moq, quantity, price);
     const product = {
       name: name,

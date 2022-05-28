@@ -5,7 +5,15 @@ import { BsPeople } from "react-icons/bs";
 import { FcLikePlaceholder } from "react-icons/fc";
 const Summary = () => {
   return (
-    <section className="container gap-6 mx-auto grid-cols-2 grid lg:grid-cols-4">
+    <section
+      data-aos="fade-up"
+      data-aos-offset="200"
+      data-aos-delay="50"
+      data-aos-duration="400"
+      data-aos-easing="ease-in-out"
+      data-aos-once="true"
+      className="container gap-6 mx-auto grid-cols-2 grid lg:grid-cols-4"
+    >
       <div className="mx-auto">
         <FaFontAwesomeFlag className="text-7xl " />
         <h1 className="font-bold text-4xl ">72</h1>

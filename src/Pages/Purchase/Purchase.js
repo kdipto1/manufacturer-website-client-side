@@ -26,9 +26,9 @@ const Purchase = () => {
             )}`,
           },
         });
-        setTool(data);
-        setMoq(data.moq);
-        setMoqs(data.moq);
+        await setTool(data);
+        await setMoq(data.moq);
+        await setMoqs(data.moq);
       } catch (error) {
         console.log(error);
       }

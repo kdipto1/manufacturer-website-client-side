@@ -20,14 +20,27 @@ import ManageOrders from "./Pages/Dashboard/ManageOrders";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
 import Footer from "./Pages/Footer/Footer";
 import Payment from "./Pages/Dashboard/Payment";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    AOS.init()
+  },[])
   return (
     <div>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/purchase/:id" element={<Purchase />} />
+        <Route
+          path="/purchase/:id"
+          element={
+            <RequireAuth>
+              <Purchase />
+            </RequireAuth>
+          }
+        />
         <Route
           path="/dashboard"
           element={

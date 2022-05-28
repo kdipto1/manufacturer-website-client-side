@@ -20,7 +20,16 @@ const Tools = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
         {tools?.slice(0, 6).map((tool) => {
           return (
-            <div key={tool?._id} className="card w-96 bg-base-100 shadow-xl">
+            <div
+              data-aos="fade-up"
+              data-aos-offset="200"
+              data-aos-delay="50"
+              data-aos-duration="400"
+              data-aos-easing="ease-in-out"
+              data-aos-once="true"
+              key={tool?._id}
+              className="card w-96 bg-base-100 shadow-xl"
+            >
               <figure>
                 <img style={{ width: "200px" }} src={tool?.image} alt="" />
               </figure>

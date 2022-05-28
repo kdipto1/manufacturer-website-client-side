@@ -19,7 +19,7 @@ const MyProfile = () => {
       },
     }).then((res) => res.json())
   );
-  console.log(profile?._id);
+  // console.log(profile?._id);
   if (isLoading || loading) {
     return <Loading />;
   }

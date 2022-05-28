@@ -52,7 +52,7 @@ const ManageProducts = () => {
                   <td>
                     <div>
                       <label
-                        for="manage-product-modal"
+                        htmlFor="manage-product-modal"
                         className="btn btn-xs modal-button"
                       >
                         Delete
@@ -71,13 +71,13 @@ const ManageProducts = () => {
                           <div className="modal-action">
                             <label
                               onClick={() => handleProductDelete(tool?._id)}
-                              for="manage-product-modal"
+                              htmlFor="manage-product-modal"
                               className="btn btn-md"
                             >
                               Yes
                             </label>
                             <label
-                              for="manage-product-modal"
+                              htmlFor="manage-product-modal"
                               className="btn btn-md"
                             >
                               No

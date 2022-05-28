@@ -13,7 +13,7 @@ const MyOrders = () => {
   const [cancel, setCancel] = useState();
   useEffect(() => {
     if (loading) {
-      return;
+      return <Loading />;
     }
     const getMyOrders = async () => {
       const email = user?.email;
@@ -80,7 +80,7 @@ const MyOrders = () => {
                     {order.status === "pending" && (
                       <div>
                         <label
-                          for="cancel-order"
+                          htmlFor="cancel-order"
                           className="btn btn-xs btn-warning modal-button"
                         >
                           Cancel
@@ -103,7 +103,10 @@ const MyOrders = () => {
                               >
                                 Yes
                               </label>
-                              <label for="cancel-order" className="btn btn-md">
+                              <label
+                                htmlFor="cancel-order"
+                                className="btn btn-md"
+                              >
                                 No
                               </label>
                             </div>
@@ -112,7 +115,10 @@ const MyOrders = () => {
                       </div>
                     )}
                   </td>
-                  <td>{(order?.shipping ==="shipped" && "shipped") || "Not Shipped"}</td>
+                  <td>
+                    {(order?.shipping === "shipped" && "shipped") ||
+                      "Not Shipped"}
+                  </td>
                   <td>
                     {order?.status === "pending" && (
                       <Link to={`/dashboard/payment/${order?._id}`}>

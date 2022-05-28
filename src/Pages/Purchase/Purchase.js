@@ -168,12 +168,14 @@ const Purchase = () => {
               className="input input-bordered input-accent w-64 mb-4 max-w-xs"
             />
             <input
+              required
               name="address"
               type="text"
               placeholder="Your Address"
               className="input input-bordered input-accent w-64 mb-4 max-w-xs"
             />
             <input
+              required
               type="number"
               name="number"
               placeholder="your Phone Number"

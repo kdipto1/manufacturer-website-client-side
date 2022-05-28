@@ -7,7 +7,7 @@ import Loading from "../Utility/Loading";
 
 const Tools = () => {
   const { data: tools, isLoading } = useQuery("homeTools", () =>
-    fetch("http://localhost:5000/tools?size=6").then((res) => res.json())
+    fetch("https://server-12-12.herokuapp.com/tools").then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;
@@ -18,12 +18,11 @@ const Tools = () => {
         Tools
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
-        {tools?.map((tool) => {
-          // console.log(tool);
+        {tools?.slice(0, 6).map((tool) => {
           return (
             <div key={tool?._id} className="card w-96 bg-base-100 shadow-xl">
               <figure>
-                <img style={{width:"200px"}} src={tool?.image} alt="" />
+                <img style={{ width: "200px" }} src={tool?.image} alt="" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{tool?.name}</h2>

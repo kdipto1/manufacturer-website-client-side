@@ -17,9 +17,15 @@ const Purchase = () => {
   // console.log(moq1);
   useEffect(() => {
     const getTool = async () => {
-      const url = `http://localhost:5000/tools/${params.id}`;
+      const url = `https://server-12-12.herokuapp.com/tools/${params.id}`;
       try {
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(url, {
+          headers: {
+            authorization: `${user?.email} ${localStorage.getItem(
+              "accessToken"
+            )}`,
+          },
+        });
         setTool(data);
         setMoq(data.moq);
         setMoqs(data.moq);
@@ -28,7 +34,7 @@ const Purchase = () => {
       }
     };
     getTool();
-  }, [params.id,update]);
+  }, [params.id, update, user?.email]);
 
   const handleQuantity = () => {
     if (moq1 < moqs) {
@@ -57,17 +63,27 @@ const Purchase = () => {
     //   totalPrice: totalPrice,
     //   status: status,
     // };
-    axios
-      .post("http://localhost:5000/orders", {
-        orderQuantity: orderQuantity,
-        name: name,
-        product: product,
-        address: address,
-        number: number,
-        totalPrice: totalPrice,
-        status: status,
-        email: email,
-      })
+    await axios
+      .post(
+        "https://server-12-12.herokuapp.com/orders",
+        {
+          orderQuantity: orderQuantity,
+          name: name,
+          product: product,
+          address: address,
+          number: number,
+          totalPrice: totalPrice,
+          status: status,
+          email: email,
+        },
+        {
+          headers: {
+            authorization: `${user?.email} ${localStorage.getItem(
+              "accessToken"
+            )}`,
+          },
+        }
+      )
       .then(function (response) {
         console.log(response);
         if (response) {
@@ -82,14 +98,21 @@ const Purchase = () => {
     console.log(quantity);
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/tool/${tool?._id}`,
+        `https://server-12-12.herokuapp.com/tool/${tool?._id}`,
         {
           quantity: quantity,
+        },
+        {
+          headers: {
+            authorization: `${user?.email} ${localStorage.getItem(
+              "accessToken"
+            )}`,
+          },
         }
       );
       console.log(data);
       if (data) {
-        setUpdate(data)
+        setUpdate(data);
       }
     } catch (error) {
       console.log(error);

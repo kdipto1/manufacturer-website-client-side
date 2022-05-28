@@ -13,9 +13,11 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery("userProfile", () =>
-    fetch(`http://localhost:5000/users?email=${user?.email}`).then((res) =>
-      res.json()
-    )
+    fetch(`https://server-12-12.herokuapp.com/users?email=${user?.email}`, {
+      headers: {
+        authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   console.log(profile?._id);
   if (isLoading || loading) {
@@ -36,15 +38,25 @@ const MyProfile = () => {
     //   phone: phone,
     // };
     // console.log(newProfile);
-    const url = `http://localhost:5000/users/${profile._id}`;
+    const url = `https://server-12-12.herokuapp.com/users/${profile._id}`;
     axios
-      .put(url, {
-        name: name,
-        address: address,
-        education: education,
-        linkedin: linkedin,
-        phone: phone,
-      })
+      .put(
+        url,
+        {
+          name: name,
+          address: address,
+          education: education,
+          linkedin: linkedin,
+          phone: phone,
+        },
+        {
+          headers: {
+            authorization: `${user?.email} ${localStorage.getItem(
+              "accessToken"
+            )}`,
+          },
+        }
+      )
       .then((response) => {
         const { data } = response;
         // console.log(data);

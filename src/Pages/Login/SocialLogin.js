@@ -14,7 +14,7 @@ const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   useEffect(() => {
     if (user) {
-      const url = "http://localhost:5000/login";
+      const url = "https://server-12-12.herokuapp.com/login";
       axios
         .post(url, { email: user1?.email })
         .then((response) => {
@@ -28,11 +28,11 @@ const SocialLogin = () => {
         });
     }
     if (user1) {
-      const email = user1?.email
-      const role  = "user"
-      const url = `http://localhost:5000/users?email=${email}`;
+      const email = user1?.email;
+      const role = "user";
+      const url = `https://server-12-12.herokuapp.com/users?email=${email}`;
       axios
-        .post(url, { email: email, role:role})
+        .post(url, { email: email, role: role })
         .then((response) => {
           const { data } = response;
           console.log(data);
@@ -48,7 +48,7 @@ const SocialLogin = () => {
     if (error) {
       toast(error?.message);
     }
-  }, [from, user, navigate, error, loading,user1?.email,user1]);
+  }, [from, user, navigate, error, loading, user1?.email, user1]);
   return (
     <div className="">
       <button className="btn btn-accent" onClick={() => signInWithGoogle()}>

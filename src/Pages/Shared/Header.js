@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Utility/Loading";
-import {BsPersonCircle} from "react-icons/bs"
+import { BsPersonCircle } from "react-icons/bs";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -64,18 +64,12 @@ const Header = () => {
         {user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex="0" className="btn btn-ghost rounded-btn">
-              <BsPersonCircle className="text-4xl"/>
+              <BsPersonCircle className="text-4xl" />
             </label>
             <ul
               tabIndex="0"
               className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 2</a>
-              </li>
               <li>
                 <a
                   onClick={() =>

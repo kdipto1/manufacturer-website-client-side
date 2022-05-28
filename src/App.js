@@ -40,17 +40,45 @@ function App() {
           <Route path="myOrders" element={<MyOrders />} />
           <Route path="payment/:id" element={<Payment />} />
           <Route path="addReview" element={<AddReview />} />
-          <Route path="makeAdmin" element={<MakeAdmin />} />
-          <Route path="addProduct" element={<AddProduct />} />
-          <Route path="manageOrders" element={<ManageOrders />} />
-          <Route path="manageProducts" element={<ManageProducts />} />
+          <Route
+            path="makeAdmin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="addProduct"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageOrders"
+            element={
+              <RequireAdmin>
+                <ManageOrders />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageProducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer/>
+      <Footer />
       <ToastContainer />
     </div>
   );

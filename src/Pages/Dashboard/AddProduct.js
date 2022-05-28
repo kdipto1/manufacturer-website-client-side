@@ -20,11 +20,15 @@ const AddProduct = () => {
       quantity: quantity,
       price: price,
     };
-    const url = "http://localhost:5000/tools";
+    const url = "https://server-12-12.herokuapp.com/tools";
     try {
-      const { data } = await axios.post(url,product);
+      const { data } = await axios.post(url, product, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
       if (data) {
-        toast.success("Product added")
+        toast.success("Product added");
         event.target.name.value = "";
         event.target.description.value = "";
         event.target.image.value = "";

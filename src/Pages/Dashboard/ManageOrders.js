@@ -7,7 +7,7 @@ import Loading from "../Utility/Loading";
 const ManageOrders = () => {
   const [user, loading, error] = useAuthState(auth);
   const { data: orders, isLoading } = useQuery("allOrder", () =>
-    fetch("http://localhost:5000/orders", {
+    fetch("https://server-12-12.herokuapp.com/orders", {
       headers: {
         authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
       },

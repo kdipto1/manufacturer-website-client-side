@@ -32,7 +32,7 @@ const Register = () => {
       toast(error?.message || error1?.message);
     }
     if (user || user1) {
-      const url = "http://localhost:5000/login";
+      const url = "https://server-12-12.herokuapp.com/login";
       axios
         .post(url, { email: user1?.email })
         .then((response) => {
@@ -64,7 +64,7 @@ const Register = () => {
     const email = data?.email;
     const name = data?.name;
     const role = "user";
-    const url = "http://localhost:5000/users";
+    const url = "https://server-12-12.herokuapp.com/users";
     axios
       .post(url, { name: name, email: email, role: role })
       .then((response) => {

@@ -9,16 +9,28 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery("homeTools", () =>
-    fetch("http://localhost:5000/makeAdmin").then((res) => res.json())
+    fetch("https://server-12-12.herokuapp.com/makeAdmin", {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;
   }
   const makeAdmin = async (id) => {
     const role = "admin";
-    const url = `http://localhost:5000/makeAdmin/${id}`;
+    const url = `https://server-12-12.herokuapp.com/makeAdmin/${id}`;
     try {
-      const { data } = await axios.post(url, { role: role });
+      const { data } = await axios.post(
+        url,
+        { role: role },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       if (data) {
         refetch();
       }
@@ -29,8 +41,8 @@ const MakeAdmin = () => {
   return (
     <div>
       <h2>Make admin:{users.length}</h2>
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th></th>

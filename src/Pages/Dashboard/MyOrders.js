@@ -17,7 +17,7 @@ const MyOrders = () => {
     }
     const getMyOrders = async () => {
       const email = user?.email;
-      const url = `http://localhost:5000/userOrders?email=${email}`;
+      const url = `https://server-12-12.herokuapp.com/userOrders?email=${email}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -35,7 +35,7 @@ const MyOrders = () => {
     getMyOrders();
   }, [loading, user?.email, cancel]);
   const handleDelete = async (id) => {
-    const url = `http://localhost:5000/userOrders/${id}`;
+    const url = `https://server-12-12.herokuapp.com/userOrders/${id}`;
     try {
       const { data } = await axios.delete(url, {
         headers: {

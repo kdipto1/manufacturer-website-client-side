@@ -1,19 +1,17 @@
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import React from 'react';
-import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
-import Loading from '../Utility/Loading';
-import CheckoutForm from './CheckoutForm';
-
-
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import React from "react";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
+import Loading from "../Utility/Loading";
+import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(
   "pk_test_51L0gtQCleCCJSf6N0qVeujBBIvuXiFVg1yxwXQdrOAXXpdKUo162kw118PF7rvgnWE49F14H702XyEkS3qYBYoSD004hIsjWXd"
 );
 const Payment = () => {
   const { id } = useParams();
-  const url = `http://localhost:5000/userOrder/${id}`;
+  const url = `https://server-12-12.herokuapp.com/userOrder/${id}`;
   const {
     data: order,
     isLoading,
@@ -33,18 +31,12 @@ const Payment = () => {
     <div>
       <div className="card w-50 max-w-md bg-base-100 shadow-xl my-12">
         <div className="card-body">
-          <p className="text-success font-bold">
-            Hello, {order?.name}
-          </p>
-          <h2 className="card-title">
-            Please Pay for {order?.product}
+          <h2 className="card-title font-bold text-success mx-auto">
+            Order Details
           </h2>
-          {/* <p>
-            Your Appointment:{" "}
-            <span className="text-orange-700">{appointment?.date}</span> at{" "}
-            {appointment?.slot}
-          </p> */}
-          {/* <p>Please pay: ${appointment?.price}</p> */}
+          <p>Product name: {order?.product}</p>
+          <p>Order quantity: {order?.orderQuantity}</p>
+          <p>Total Price: {order?.totalPrice} (usd)</p>
         </div>
       </div>
       <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100">

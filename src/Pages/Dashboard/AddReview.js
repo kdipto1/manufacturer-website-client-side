@@ -21,7 +21,20 @@ const AddReview = () => {
 
     // }
     axios
-      .post("http://localhost:5000/review", { comment:comment,ratting:ratting,email:email,name:name })
+      .post(
+        "https://server-12-12.herokuapp.com/review",
+        {
+          comment: comment,
+          ratting: ratting,
+          email: email,
+          name: name,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
       .then(function (response) {
         console.log(response);
         if (response) {

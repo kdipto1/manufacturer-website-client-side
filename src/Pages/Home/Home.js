@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
+import Contact from "./Contact";
 import Reviews from "./Reviews";
 import Summary from "./Summary";
 import Tools from "./Tools";
@@ -16,7 +17,8 @@ const Home = () => {
         </h2>
         <Summary />
       </div>
-      <Reviews/>
+      <Reviews />
+      <Contact/>
     </div>
   );
 };

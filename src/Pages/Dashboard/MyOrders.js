@@ -64,6 +64,7 @@ const MyOrders = () => {
               <th>Quantity</th>
               <th>Total Price(usd)</th>
               <th>Cancel Order</th>
+              <th>Shipping status</th>
               <th>Payment</th>
             </tr>
           </thead>
@@ -111,6 +112,7 @@ const MyOrders = () => {
                       </div>
                     )}
                   </td>
+                  <td>{(order?.shipping ==="shipped" && "shipped") || "Not Shipped"}</td>
                   <td>
                     {order?.status === "pending" && (
                       <Link to={`/dashboard/payment/${order?._id}`}>
@@ -124,7 +126,7 @@ const MyOrders = () => {
                         </p>
                         <p>
                           Transaction id:{" "}
-                          <span className="text-success">
+                          <span className="text-success text-sm">
                             {order?.transactionId}
                           </span>
                         </p>

@@ -62,7 +62,7 @@ const ManageOrders = () => {
           </thead>
           {orders.map((order, index) => {
             return (
-              <tbody>
+              <tbody key={order?._id}>
                 <tr>
                   <th>{index + 1}</th>
                   <td>{order?.product}</td>

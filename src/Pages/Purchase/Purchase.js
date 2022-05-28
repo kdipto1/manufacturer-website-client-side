@@ -85,7 +85,6 @@ const Purchase = () => {
         }
       )
       .then(function (response) {
-        console.log(response);
         if (response) {
           toast("Order send");
         }
@@ -110,7 +109,6 @@ const Purchase = () => {
           },
         }
       );
-      console.log(data);
       if (data) {
         setUpdate(data);
       }

@@ -89,7 +89,14 @@ function App() {
           />
         </Route>
         <Route path="/blogs" element={<Blogs />} />
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route
+          path="/portfolio"
+          element={
+            <RequireAdmin>
+              <Portfolio />
+            </RequireAdmin>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/map" element={<HomeMap />}></Route>
